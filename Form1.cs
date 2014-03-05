@@ -18,7 +18,6 @@ namespace DesktopNote
         public NoteForm()
         {
             InitializeComponent();
-            fontButton.Anchor = AnchorStyles.None;
             initDefinedCombinationList();
         }
 
@@ -41,11 +40,13 @@ namespace DesktopNote
                 this.mainTextBox.Font = currentNote.Font;
             }
             this.Text = "Desktop Note("+(this.noteList.IndexOf(this.Tag)+1)+"/"+this.noteList.Count+")";
+            this.noteFormStatusStrip.Items[0].Text = "Desktop Note("+(this.noteList.IndexOf(this.Tag)+1)+"/"+this.noteList.Count+")";
         }
 
         private void NoteForm_Load(object sender, EventArgs e)
         {
             newButton_Click(null, null);
+            this.NoteForm_SizeChanged(null, null);
         }
 
         private void saveCurrentNote() {
@@ -61,6 +62,7 @@ namespace DesktopNote
 
         private void newButton_Click(object sender, EventArgs e)
         {
+            saveCurrentNote();
             Note newNote = new Note();
             newNote.CreateDataTime = DateTime.Now;
             this.Tag = newNote;
@@ -80,7 +82,7 @@ namespace DesktopNote
                 refreshMainTextBox();
             }
             else {
-                this.newButton.PerformClick();
+                newButton_Click(this, new EventArgs());
             }
         }
 
@@ -124,7 +126,7 @@ namespace DesktopNote
             }
         }
 
-        private void fontButton_Click(object sender, EventArgs e)
+        private void setFontButton_Click(object sender, EventArgs e)
         {
             FontForm fontForm = new FontForm();
             fontForm.NoteFont = this.mainTextBox.Font;
@@ -192,5 +194,43 @@ namespace DesktopNote
             }
 
         }
+
+        private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void NoteForm_SizeChanged(object sender, EventArgs e)
+        {
+            ToolStripMenuItem toDelItem = null;
+            foreach (ToolStripMenuItem item in this.editEToolStripMenuItem.DropDownItems) {
+                if (item.Name.Equals("windowsStateMenuItem")) {
+                    toDelItem = item;
+                }
+            }
+            this.editEToolStripMenuItem.DropDownItems.Remove(toDelItem);
+            ToolStripMenuItem windowsStateMenuItem;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                windowsStateMenuItem = new ToolStripMenuItem("Maximize");
+            }
+            else {
+                windowsStateMenuItem = new ToolStripMenuItem("Minimize");
+            }
+            windowsStateMenuItem.Name = "windowsStateMenuItem";
+            windowsStateMenuItem.Click += new EventHandler(windowsStateMenuItem_Click);
+            this.editEToolStripMenuItem.DropDownItems.Add(windowsStateMenuItem);
+        }
+
+        void windowsStateMenuItem_Click(object sender, EventArgs e) {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
     }
 }

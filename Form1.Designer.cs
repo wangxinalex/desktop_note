@@ -29,132 +29,174 @@
         private void InitializeComponent()
         {
             this.mainTextBox = new System.Windows.Forms.TextBox();
-            this.bottomPanel = new System.Windows.Forms.Panel();
-            this.fontButton = new System.Windows.Forms.Button();
-            this.foreColorButton = new System.Windows.Forms.Button();
-            this.setBackgroundButton = new System.Windows.Forms.Button();
-            this.nextButton = new System.Windows.Forms.Button();
-            this.preButton = new System.Windows.Forms.Button();
-            this.delButton = new System.Windows.Forms.Button();
-            this.newButton = new System.Windows.Forms.Button();
-            this.bottomPanel.SuspendLayout();
+            this.noteFormMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.previousPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.foreColorBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backColorHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noteFormStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.noteFormMenuStrip.SuspendLayout();
+            this.noteFormStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTextBox
             // 
             this.mainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTextBox.Location = new System.Drawing.Point(0, 0);
+            this.mainTextBox.Location = new System.Drawing.Point(0, 25);
             this.mainTextBox.Multiline = true;
             this.mainTextBox.Name = "mainTextBox";
-            this.mainTextBox.Size = new System.Drawing.Size(526, 261);
+            this.mainTextBox.Size = new System.Drawing.Size(526, 236);
             this.mainTextBox.TabIndex = 0;
             this.mainTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainTextBox_KeyDown);
             this.mainTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mainTextBox_KeyPress);
             // 
-            // bottomPanel
+            // noteFormMenuStrip
             // 
-            this.bottomPanel.Controls.Add(this.fontButton);
-            this.bottomPanel.Controls.Add(this.foreColorButton);
-            this.bottomPanel.Controls.Add(this.setBackgroundButton);
-            this.bottomPanel.Controls.Add(this.nextButton);
-            this.bottomPanel.Controls.Add(this.preButton);
-            this.bottomPanel.Controls.Add(this.delButton);
-            this.bottomPanel.Controls.Add(this.newButton);
-            this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 216);
-            this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(526, 45);
-            this.bottomPanel.TabIndex = 1;
+            this.noteFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileFToolStripMenuItem,
+            this.editEToolStripMenuItem,
+            this.toolsTToolStripMenuItem});
+            this.noteFormMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.noteFormMenuStrip.Name = "noteFormMenuStrip";
+            this.noteFormMenuStrip.Size = new System.Drawing.Size(526, 25);
+            this.noteFormMenuStrip.TabIndex = 2;
+            this.noteFormMenuStrip.Text = "menuStrip1";
             // 
-            // fontButton
+            // fileFToolStripMenuItem
             // 
-            this.fontButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.fontButton.Location = new System.Drawing.Point(450, 0);
-            this.fontButton.Name = "fontButton";
-            this.fontButton.Size = new System.Drawing.Size(75, 45);
-            this.fontButton.TabIndex = 4;
-            this.fontButton.Text = "Font";
-            this.fontButton.UseVisualStyleBackColor = true;
-            this.fontButton.Click += new System.EventHandler(this.fontButton_Click);
+            this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNToolStripMenuItem,
+            this.deleteDToolStripMenuItem,
+            this.previousPToolStripMenuItem,
+            this.nextLToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitXToolStripMenuItem});
+            this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
+            this.fileFToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
+            this.fileFToolStripMenuItem.Text = "File(&F)";
             // 
-            // foreColorButton
+            // createNToolStripMenuItem
             // 
-            this.foreColorButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.foreColorButton.Location = new System.Drawing.Point(375, 0);
-            this.foreColorButton.Name = "foreColorButton";
-            this.foreColorButton.Size = new System.Drawing.Size(75, 45);
-            this.foreColorButton.TabIndex = 3;
-            this.foreColorButton.Text = "ForeColor";
-            this.foreColorButton.UseVisualStyleBackColor = true;
-            this.foreColorButton.Click += new System.EventHandler(this.setForeColorButton_Click);
+            this.createNToolStripMenuItem.Name = "createNToolStripMenuItem";
+            this.createNToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.createNToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.createNToolStripMenuItem.Text = "Create(&N)";
+            this.createNToolStripMenuItem.Click += new System.EventHandler(this.newButton_Click);
             // 
-            // setBackgroundButton
+            // deleteDToolStripMenuItem
             // 
-            this.setBackgroundButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.setBackgroundButton.Location = new System.Drawing.Point(300, 0);
-            this.setBackgroundButton.Name = "setBackgroundButton";
-            this.setBackgroundButton.Size = new System.Drawing.Size(75, 45);
-            this.setBackgroundButton.TabIndex = 2;
-            this.setBackgroundButton.Text = "Background";
-            this.setBackgroundButton.UseVisualStyleBackColor = true;
-            this.setBackgroundButton.Click += new System.EventHandler(this.setBackgroundButton_Click);
+            this.deleteDToolStripMenuItem.Name = "deleteDToolStripMenuItem";
+            this.deleteDToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.deleteDToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.deleteDToolStripMenuItem.Text = "Delete(&D)";
+            this.deleteDToolStripMenuItem.Click += new System.EventHandler(this.delButton_Click);
             // 
-            // nextButton
+            // previousPToolStripMenuItem
             // 
-            this.nextButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.nextButton.Location = new System.Drawing.Point(225, 0);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(75, 45);
-            this.nextButton.TabIndex = 2;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.previousPToolStripMenuItem.Name = "previousPToolStripMenuItem";
+            this.previousPToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.previousPToolStripMenuItem.Text = "Previous(&P)";
+            this.previousPToolStripMenuItem.Click += new System.EventHandler(this.preButton_Click);
             // 
-            // preButton
+            // nextLToolStripMenuItem
             // 
-            this.preButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.preButton.Location = new System.Drawing.Point(150, 0);
-            this.preButton.Name = "preButton";
-            this.preButton.Size = new System.Drawing.Size(75, 45);
-            this.preButton.TabIndex = 2;
-            this.preButton.Text = "Previous";
-            this.preButton.UseVisualStyleBackColor = true;
-            this.preButton.Click += new System.EventHandler(this.preButton_Click);
+            this.nextLToolStripMenuItem.Name = "nextLToolStripMenuItem";
+            this.nextLToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.nextLToolStripMenuItem.Text = "Next(&L)";
+            this.nextLToolStripMenuItem.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // delButton
+            // toolStripMenuItem1
             // 
-            this.delButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.delButton.Location = new System.Drawing.Point(75, 0);
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(75, 45);
-            this.delButton.TabIndex = 1;
-            this.delButton.Text = "Delete";
-            this.delButton.UseVisualStyleBackColor = true;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 6);
             // 
-            // newButton
+            // exitXToolStripMenuItem
             // 
-            this.newButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.newButton.Location = new System.Drawing.Point(0, 0);
-            this.newButton.Name = "newButton";
-            this.newButton.Size = new System.Drawing.Size(75, 45);
-            this.newButton.TabIndex = 0;
-            this.newButton.Text = "Create";
-            this.newButton.UseVisualStyleBackColor = true;
-            this.newButton.Click += new System.EventHandler(this.newButton_Click);
+            this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
+            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.exitXToolStripMenuItem.Text = "Exit(&X)";
+            this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
+            // 
+            // editEToolStripMenuItem
+            // 
+            this.editEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foreColorBToolStripMenuItem,
+            this.backColorHToolStripMenuItem,
+            this.fontFToolStripMenuItem});
+            this.editEToolStripMenuItem.Name = "editEToolStripMenuItem";
+            this.editEToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
+            this.editEToolStripMenuItem.Text = "Edit(&E)";
+            // 
+            // foreColorBToolStripMenuItem
+            // 
+            this.foreColorBToolStripMenuItem.Name = "foreColorBToolStripMenuItem";
+            this.foreColorBToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.foreColorBToolStripMenuItem.Text = "ForeColor(&B)";
+            this.foreColorBToolStripMenuItem.Click += new System.EventHandler(this.setForeColorButton_Click);
+            // 
+            // backColorHToolStripMenuItem
+            // 
+            this.backColorHToolStripMenuItem.Name = "backColorHToolStripMenuItem";
+            this.backColorHToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.backColorHToolStripMenuItem.Text = "BackColor(&H)";
+            this.backColorHToolStripMenuItem.Click += new System.EventHandler(this.setBackgroundButton_Click);
+            // 
+            // fontFToolStripMenuItem
+            // 
+            this.fontFToolStripMenuItem.Name = "fontFToolStripMenuItem";
+            this.fontFToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.fontFToolStripMenuItem.Text = "Font(&F)";
+            this.fontFToolStripMenuItem.Click += new System.EventHandler(this.setFontButton_Click);
+            // 
+            // toolsTToolStripMenuItem
+            // 
+            this.toolsTToolStripMenuItem.Name = "toolsTToolStripMenuItem";
+            this.toolsTToolStripMenuItem.Size = new System.Drawing.Size(67, 21);
+            this.toolsTToolStripMenuItem.Text = "Tools(&T)";
+            // 
+            // noteFormStatusStrip
+            // 
+            this.noteFormStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.noteFormStatusStrip.Location = new System.Drawing.Point(0, 239);
+            this.noteFormStatusStrip.Name = "noteFormStatusStrip";
+            this.noteFormStatusStrip.Size = new System.Drawing.Size(526, 22);
+            this.noteFormStatusStrip.TabIndex = 3;
+            this.noteFormStatusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(113, 17);
+            this.toolStripStatusLabel1.Text = "DesktopNote(1/1)";
             // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.bottomPanel);
+            this.Controls.Add(this.noteFormStatusStrip);
             this.Controls.Add(this.mainTextBox);
+            this.Controls.Add(this.noteFormMenuStrip);
+            this.MainMenuStrip = this.noteFormMenuStrip;
             this.Name = "NoteForm";
             this.Text = "桌面便笺";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoteForm_FormClosing);
             this.Load += new System.EventHandler(this.NoteForm_Load);
-            this.bottomPanel.ResumeLayout(false);
+            this.SizeChanged += new System.EventHandler(this.NoteForm_SizeChanged);
+            this.noteFormMenuStrip.ResumeLayout(false);
+            this.noteFormMenuStrip.PerformLayout();
+            this.noteFormStatusStrip.ResumeLayout(false);
+            this.noteFormStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,14 +205,21 @@
         #endregion
 
         private System.Windows.Forms.TextBox mainTextBox;
-        private System.Windows.Forms.Panel bottomPanel;
-        private System.Windows.Forms.Button setBackgroundButton;
-        private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.Button preButton;
-        private System.Windows.Forms.Button delButton;
-        private System.Windows.Forms.Button newButton;
-        private System.Windows.Forms.Button foreColorButton;
-        private System.Windows.Forms.Button fontButton;
+        private System.Windows.Forms.MenuStrip noteFormMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem previousPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem foreColorBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backColorHToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fontFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsTToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip noteFormStatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
