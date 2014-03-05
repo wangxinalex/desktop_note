@@ -30,13 +30,13 @@
         {
             this.mainTextBox = new System.Windows.Forms.TextBox();
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.fontButton = new System.Windows.Forms.Button();
             this.foreColorButton = new System.Windows.Forms.Button();
             this.setBackgroundButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.preButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
             this.newButton = new System.Windows.Forms.Button();
-            this.fontButton = new System.Windows.Forms.Button();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,8 @@
             this.mainTextBox.Name = "mainTextBox";
             this.mainTextBox.Size = new System.Drawing.Size(526, 261);
             this.mainTextBox.TabIndex = 0;
+            this.mainTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainTextBox_KeyDown);
+            this.mainTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mainTextBox_KeyPress);
             // 
             // bottomPanel
             // 
@@ -63,6 +65,17 @@
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(526, 45);
             this.bottomPanel.TabIndex = 1;
+            // 
+            // fontButton
+            // 
+            this.fontButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.fontButton.Location = new System.Drawing.Point(450, 0);
+            this.fontButton.Name = "fontButton";
+            this.fontButton.Size = new System.Drawing.Size(75, 45);
+            this.fontButton.TabIndex = 4;
+            this.fontButton.Text = "Font";
+            this.fontButton.UseVisualStyleBackColor = true;
+            this.fontButton.Click += new System.EventHandler(this.fontButton_Click);
             // 
             // foreColorButton
             // 
@@ -129,17 +142,6 @@
             this.newButton.Text = "Create";
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
-            // 
-            // fontButton
-            // 
-            this.fontButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.fontButton.Location = new System.Drawing.Point(450, 0);
-            this.fontButton.Name = "fontButton";
-            this.fontButton.Size = new System.Drawing.Size(75, 45);
-            this.fontButton.TabIndex = 4;
-            this.fontButton.Text = "Font";
-            this.fontButton.UseVisualStyleBackColor = true;
-            this.fontButton.Click += new System.EventHandler(this.fontButton_Click);
             // 
             // NoteForm
             // 

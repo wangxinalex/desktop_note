@@ -14,11 +14,24 @@ namespace DesktopNote
     public partial class NoteForm : Form
     {
         private ArrayList noteList = new ArrayList();
+        private ArrayList definedCombinationList = new ArrayList();
         public NoteForm()
         {
             InitializeComponent();
+            fontButton.Anchor = AnchorStyles.None;
+            initDefinedCombinationList();
         }
 
+         public void initDefinedCombinationList() {
+            for (int i = 0; i < 9; i++) {
+                DefinedCombination dc = new DefinedCombination();
+                dc.Prefix = '/';
+                dc.Replaced = (char)((int)'1'+i);
+                dc.Replacement = (char)((int)'\x2460' + i);
+                this.definedCombinationList.Add(dc);
+            }
+        }
+        
         private void refreshMainTextBox() {
             if (this.Tag != null && this.Tag is Note) {
                 Note currentNote = (Note)this.Tag;
@@ -130,6 +143,52 @@ namespace DesktopNote
             ColorDialog cDialog = new ColorDialog();
             if (cDialog.ShowDialog() == DialogResult.OK) {
                 this.mainTextBox.ForeColor = cDialog.Color;
+            }
+
+        }
+
+        private void mainTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers != Keys.Control) {
+                return;
+            }
+            if (e.KeyCode == Keys.Up) {
+                this.Top -= 10;
+            }
+            if (e.KeyCode == Keys.Down) {
+                this.Top += 10;
+            }
+            if (e.KeyCode == Keys.Left) {
+                this.Left -= 10;
+            }
+            if (e.KeyCode == Keys.Right) {
+                this.Left += 10;
+            }
+        }
+
+        private void mainTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = null;
+            if (sender is TextBox)
+            {
+                textBox = (TextBox)sender;
+            }
+            else {
+                return;
+            }
+            int ss = textBox.SelectionStart;
+            if (ss == 0) {
+                return;
+            }
+            foreach (DefinedCombination dc in this.definedCombinationList) {
+                if (dc.Prefix == textBox.Text[ss - 1] && dc.Replaced == e.KeyChar) {
+                    textBox.Text = textBox.Text.Remove(ss - 1, 1);
+                    textBox.Text = textBox.Text.Insert(ss - 1, Convert.ToString(dc.Replacement));
+                    textBox.SelectionStart = ss;
+                    textBox.SelectionLength = 0;
+                    e.Handled = true;
+
+                }
             }
 
         }

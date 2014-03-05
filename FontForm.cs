@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace DesktopNote
     {
         Font font = Form.DefaultFont;
         public event EventHandler Apply;
+
         public Font NoteFont {
             set {
                 this.font = value;
@@ -67,6 +69,8 @@ namespace DesktopNote
             this.CancelButton = this.cancelButton;
             apply_Button.Click += new EventHandler(applyButton_Click);
         }
+
+       
 
         void applyButton_Click(Object sender, EventArgs e) {
             if (Apply != null) {

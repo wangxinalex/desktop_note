@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefinedCombination.cs" />
     <Compile Include="FontForm.cs">
       <SubType>Form</SubType>
     </Compile>
