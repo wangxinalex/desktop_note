@@ -35,17 +35,6 @@ namespace DesktopNote
             newButton_Click(null, null);
         }
 
-        private void mainTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void setFontColor_Click(object sender, EventArgs e)
-        {
-            FontForm fontForm = new FontForm();
-            fontForm.ShowDialog();
-        }
-
         private void saveCurrentNote() {
             if (this.Tag != null && this.Tag is Note) {
                 Note currentNote = (Note)this.Tag;
@@ -126,9 +115,14 @@ namespace DesktopNote
         {
             FontForm fontForm = new FontForm();
             fontForm.NoteFont = this.mainTextBox.Font;
+            fontForm.Apply += new EventHandler(fontForm_Apply);
             if (fontForm.ShowDialog() == DialogResult.OK) {
                 this.mainTextBox.Font = fontForm.NoteFont;
             }
+        }
+
+        void fontForm_Apply(object sender, EventArgs e) {
+            this.mainTextBox.Font = ((FontForm)sender).NoteFont;
         }
 
         private void setForeColorButton_Click(object sender, EventArgs e)

@@ -48,7 +48,6 @@
             this.mainTextBox.Name = "mainTextBox";
             this.mainTextBox.Size = new System.Drawing.Size(526, 261);
             this.mainTextBox.TabIndex = 0;
-            this.mainTextBox.TextChanged += new System.EventHandler(this.mainTextBox_TextChanged);
             // 
             // bottomPanel
             // 

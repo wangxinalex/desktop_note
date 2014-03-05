@@ -13,6 +13,7 @@ namespace DesktopNote
     public partial class FontForm : Form
     {
         Font font = Form.DefaultFont;
+        public event EventHandler Apply;
         public Font NoteFont {
             set {
                 this.font = value;
@@ -51,6 +52,12 @@ namespace DesktopNote
                 return font;
             }
         }
+        
+        public bool ShowApply {
+            get { return apply_Button.Enabled; }
+            set { apply_Button.Enabled = value;}
+        }
+
         public FontForm()
         {
             InitializeComponent();
@@ -58,7 +65,14 @@ namespace DesktopNote
             cancelButton.DialogResult = DialogResult.Cancel;
             this.AcceptButton = this.okButton;
             this.CancelButton = this.cancelButton;
+            apply_Button.Click += new EventHandler(applyButton_Click);
         }
+
+        void applyButton_Click(Object sender, EventArgs e) {
+            if (Apply != null) {
+                Apply(this, new EventArgs());
+            }    
+        }        
 
 
         private void fontComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,6 +104,8 @@ namespace DesktopNote
         {
             this.Font = font;
         }
+
+
 
     }
 }

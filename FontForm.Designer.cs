@@ -41,6 +41,7 @@
             this.underlineCheckBox = new System.Windows.Forms.CheckBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.apply_Button = new System.Windows.Forms.Button();
             this.sizeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             this.sizeGroupBox.Controls.Add(this.sizeRadioButton1);
             this.sizeGroupBox.Location = new System.Drawing.Point(24, 58);
             this.sizeGroupBox.Name = "sizeGroupBox";
-            this.sizeGroupBox.Size = new System.Drawing.Size(154, 163);
+            this.sizeGroupBox.Size = new System.Drawing.Size(154, 201);
             this.sizeGroupBox.TabIndex = 2;
             this.sizeGroupBox.TabStop = false;
             this.sizeGroupBox.Text = "Size";
@@ -169,7 +170,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(203, 168);
+            this.okButton.Location = new System.Drawing.Point(203, 207);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 7;
@@ -178,19 +179,29 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(203, 198);
+            this.cancelButton.Location = new System.Drawing.Point(203, 236);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // apply_Button
+            // 
+            this.apply_Button.Location = new System.Drawing.Point(203, 178);
+            this.apply_Button.Name = "apply_Button";
+            this.apply_Button.Size = new System.Drawing.Size(75, 23);
+            this.apply_Button.TabIndex = 9;
+            this.apply_Button.Text = "Apply";
+            this.apply_Button.UseVisualStyleBackColor = true;
+            // 
             // FontForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 279);
             this.ControlBox = false;
+            this.Controls.Add(this.apply_Button);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.underlineCheckBox);
@@ -226,5 +237,6 @@
         private System.Windows.Forms.CheckBox underlineCheckBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button apply_Button;
     }
 }
