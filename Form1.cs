@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -229,6 +230,61 @@ namespace DesktopNote
             }
             else {
                 this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter= "text file|*.txt";
+            if (ofd.ShowDialog() == DialogResult.OK) {
+                TextReader tr = null;
+                if (this.Tag == null) {
+                    this.newButton_Click(this,null);
+                }
+                Note currentNote = (Note)this.Tag;
+                try
+                {
+                    tr = new StreamReader(ofd.FileName, Encoding.Default);
+                    currentNote.Content = tr.ReadToEnd();
+                    this.refreshMainTextBox();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally {
+                    if (tr != null) {
+                        tr.Close();
+                    }
+                }
+
+            }
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "text file|*.txt";
+            if (sfd.ShowDialog() == DialogResult.OK) {
+                TextWriter tw = null;
+                try
+                {
+                    saveCurrentNote();
+                    tw = new StreamWriter(sfd.FileName, false, Encoding.Default);
+                    tw.Write(((Note)this.Tag).Content);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally {
+                    if (tw != null) {
+                        tw.Close();
+                    }
+                }
+                
             }
         }
 
