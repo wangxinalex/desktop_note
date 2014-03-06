@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DesktopNote
 {
@@ -20,7 +21,7 @@ namespace DesktopNote
 
         private ArrayList noteList = new ArrayList();
         private ArrayList definedCombinationList = new ArrayList();
-        
+
         public NoteForm()
         {
             InitializeComponent();
@@ -52,9 +53,26 @@ namespace DesktopNote
         private void NoteForm_Load(object sender, EventArgs e)
         {
             //newButton_Click(null, null);
-            //this.loadNote();
-            loadNoteFromXML();
+            this.deSerializeNote();
+            //loadNoteFromXML();
             this.NoteForm_SizeChanged(null, null);
+        }
+
+        private void NoteForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to exit?",
+                "Desktop Note", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (dr == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else {
+                this.serializeNote();
+                //this.saveNoteToXML();
+            }
         }
 
         private void saveCurrentNote() {
@@ -114,21 +132,6 @@ namespace DesktopNote
             refreshMainTextBox();
         }
 
-        private void NoteForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult dr = MessageBox.Show("Are you sure to exit?",
-                "Desktop Note", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2);
-            if (dr == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else {
-                this.saveNoteToXML();
-            }
-        }
 
         private void setBackgroundButton_Click(object sender, EventArgs e)
         {
@@ -420,11 +423,64 @@ namespace DesktopNote
                         fs |= fs_fs[i];
                     }
                 }
-                    note.Font = new Font(ele.Element("Font").Attribute("Name").Value,
+                note.Font = new Font(ele.Element("Font").Attribute("Name").Value,
                         Convert.ToInt32(ele.Element("Font").Attribute("Size").Value),
                         fs);
                 noteList.Add(note);
             }
+            if (noteList.Count != 0) {
+                this.Tag = noteList[0];
+            } else {
+                newButton_Click(null, null);
+            }
+            this.refreshMainTextBox();
+
+        }
+
+        private void serializeNote() {
+            Stream stream = null;
+            try
+            {
+                this.saveCurrentNote();
+                BinaryFormatter Transfer = new BinaryFormatter();
+                stream = new FileStream(Application.StartupPath + "\\myNotes.bin",
+                FileMode.Create, FileAccess.Write, FileShare.None);
+                Transfer.Serialize(stream, this.noteList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                if (stream != null) {
+                    stream.Close();
+                }
+            }
+        }
+
+        private void deSerializeNote()
+        {
+            Stream stream = null;
+            try
+            {
+                this.saveCurrentNote();
+                BinaryFormatter Transfer = new BinaryFormatter();
+                stream = new FileStream(Application.StartupPath + "\\myNotes.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                this.noteList = (ArrayList)Transfer.Deserialize(stream);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+
             if (noteList.Count != 0)
             {
                 this.Tag = noteList[0];
@@ -433,7 +489,6 @@ namespace DesktopNote
                 newButton_Click(null,null);
             }
             this.refreshMainTextBox();
-
         }
     }
 }

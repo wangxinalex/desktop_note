@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace DesktopNote
 {
+    [Serializable]
     class Note
     {
         private string s_Content;
