@@ -15,8 +15,12 @@ namespace DesktopNote
 {
     public partial class NoteForm : Form
     {
+        string[] fs_str = {"Bold", "Italic","Underline","Strikeout"};
+        FontStyle[] fs_fs = {FontStyle.Bold, FontStyle.Italic, FontStyle.Underline, FontStyle.Strikeout };
+
         private ArrayList noteList = new ArrayList();
         private ArrayList definedCombinationList = new ArrayList();
+        
         public NoteForm()
         {
             InitializeComponent();
@@ -122,7 +126,7 @@ namespace DesktopNote
                 e.Cancel = true;
             }
             else {
-                this.saveNote();
+                this.saveNoteToXML();
             }
         }
 
@@ -291,7 +295,7 @@ namespace DesktopNote
             //    }
                 
             //}
-            saveNotetoXML();
+            saveNoteToXML();
         }
 
         private void loadNote() {
@@ -366,7 +370,7 @@ namespace DesktopNote
             loadNote();
         }
 
-        private void saveNotetoXML() {
+        private void saveNoteToXML() {
             saveCurrentNote();
             
             string saveFile = Application.StartupPath+"\\Notes.xml";
@@ -411,21 +415,14 @@ namespace DesktopNote
                 note.ModifyDateTime = DateTime.Parse(ele.Element("ModifyDateTime").Value);
                 FontStyle fs = new FontStyle();
                 string s_fs = ele.Element("Font").Attribute("Style").Value;
-                if (s_fs.Contains("Italic")) {
-                    fs |= FontStyle.Italic;
+                for (int i = 0; i < fs_str.Length; i++) {
+                    if (s_fs.Contains(fs_str[i])) {
+                        fs |= fs_fs[i];
+                    }
                 }
-                if (s_fs.Contains("Bold")) {
-                    fs |= FontStyle.Bold;
-                }
-                if (s_fs.Contains("Underline")) {
-                    fs |= FontStyle.Underline;
-                }
-                if (s_fs.Contains("Strikeout")) {
-                    fs |= FontStyle.Strikeout;
-                }
-                note.Font = new Font(ele.Element("Font").Attribute("Name").Value,
-                    Convert.ToInt32(ele.Element("Font").Attribute("Size").Value),
-                    fs);
+                    note.Font = new Font(ele.Element("Font").Attribute("Name").Value,
+                        Convert.ToInt32(ele.Element("Font").Attribute("Size").Value),
+                        fs);
                 noteList.Add(note);
             }
             if (noteList.Count != 0)
