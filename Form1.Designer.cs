@@ -110,15 +110,17 @@
             // previousPToolStripMenuItem
             // 
             this.previousPToolStripMenuItem.Name = "previousPToolStripMenuItem";
-            this.previousPToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.previousPToolStripMenuItem.Text = "Previous(&P)";
+            this.previousPToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
+            this.previousPToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.previousPToolStripMenuItem.Text = "Previous(&K)";
             this.previousPToolStripMenuItem.Click += new System.EventHandler(this.preButton_Click);
             // 
             // nextLToolStripMenuItem
             // 
             this.nextLToolStripMenuItem.Name = "nextLToolStripMenuItem";
-            this.nextLToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.nextLToolStripMenuItem.Text = "Next(&L)";
+            this.nextLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
+            this.nextLToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.nextLToolStripMenuItem.Text = "Next(&J)";
             this.nextLToolStripMenuItem.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // loadToolStripMenuItem
@@ -131,8 +133,9 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.saveToolStripMenuItem.Text = "Save to File";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.saveToolStripMenuItem.Text = "Save to File(&S)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -205,6 +208,7 @@
             this.setWorkDirectoryToolStripMenuItem.Name = "setWorkDirectoryToolStripMenuItem";
             this.setWorkDirectoryToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.setWorkDirectoryToolStripMenuItem.Text = "Set WorkDirectory";
+            this.setWorkDirectoryToolStripMenuItem.Visible = false;
             this.setWorkDirectoryToolStripMenuItem.Click += new System.EventHandler(this.setWorkDirectoryToolStripMenuItem_Click);
             // 
             // NoteForm

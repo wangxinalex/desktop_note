@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DesktopNote
 {
@@ -47,7 +48,8 @@ namespace DesktopNote
         private void NoteForm_Load(object sender, EventArgs e)
         {
             //newButton_Click(null, null);
-            this.loadNote();
+            //this.loadNote();
+            loadNoteFromXML();
             this.NoteForm_SizeChanged(null, null);
         }
 
@@ -66,7 +68,7 @@ namespace DesktopNote
         {
             saveCurrentNote();
             Note newNote = new Note();
-            newNote.CreateDataTime = DateTime.Now;
+            newNote.CreateDateTime = DateTime.Now;
             this.Tag = newNote;
             noteList.Add(newNote);
             refreshMainTextBox();
@@ -268,27 +270,28 @@ namespace DesktopNote
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "text file|*.txt";
-            if (sfd.ShowDialog() == DialogResult.OK) {
-                TextWriter tw = null;
-                try
-                {
-                    saveCurrentNote();
-                    tw = new StreamWriter(sfd.FileName, false, Encoding.Default);
-                    tw.Write(((Note)this.Tag).Content);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Exception: " + ex.Message);
-                }
-                finally {
-                    if (tw != null) {
-                        tw.Close();
-                    }
-                }
+            //SaveFileDialog sfd = new SaveFileDialog();
+            //sfd.Filter = "text file|*.txt";
+            //if (sfd.ShowDialog() == DialogResult.OK) {
+            //    TextWriter tw = null;
+            //    try
+            //    {
+            //        saveCurrentNote();
+            //        tw = new StreamWriter(sfd.FileName, false, Encoding.Default);
+            //        tw.Write(((Note)this.Tag).Content);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Exception: " + ex.Message);
+            //    }
+            //    finally {
+            //        if (tw != null) {
+            //            tw.Close();
+            //        }
+            //    }
                 
-            }
+            //}
+            saveNotetoXML();
         }
 
         private void loadNote() {
@@ -363,5 +366,77 @@ namespace DesktopNote
             loadNote();
         }
 
+        private void saveNotetoXML() {
+            saveCurrentNote();
+            
+            string saveFile = Application.StartupPath+"\\Notes.xml";
+            XDocument xDoc = new XDocument();
+            XElement root = new XElement("Notes");
+            xDoc.Add(root);
+            xDoc.Save(saveFile);
+            
+            XElement xe = XDocument.Load(saveFile).Element("Notes");
+            foreach(Note note in this.noteList){
+                XElement record = new XElement("Note",
+                        new XElement("Content", note.Content),
+                        new XElement("BackColor", note.BackColor.ToArgb().ToString()),
+                        new XElement("CreateDateTime", note.CreateDateTime.ToString()),
+                        new XElement("Font",
+                            new XAttribute("Name", note.Font.Name.ToString()),
+                            new XAttribute("Size", note.Font.Size.ToString()),
+                            new XAttribute("Style", note.Font.Style.ToString())),
+                        new XElement("ForeColor", note.ForeColor.ToArgb().ToString()),
+                        new XElement("ModifyDateTime", note.ModifyDateTime.ToString()));
+
+                xe.Add(record);
+            }
+            xe.Save(saveFile);
+        }
+
+        private void loadNoteFromXML() {
+            noteList.Clear();
+            string saveFile = Application.StartupPath+"\\Notes.xml";
+            XElement xe = XDocument.Load(saveFile).Element("Notes");
+            IEnumerable<XElement> elements = from ele in xe.Elements("Note")
+                                             select ele;
+            loadListbyElements(elements);
+        }
+        private void loadListbyElements(IEnumerable<XElement> elements){
+            foreach(var ele in elements){
+                Note note = new Note();
+                note.Content = ele.Element("Content").Value;
+                note.BackColor = Color.FromArgb(Convert.ToInt32(ele.Element("BackColor").Value));
+                note.ForeColor = Color.FromArgb(Convert.ToInt32(ele.Element("ForeColor").Value));
+                note.CreateDateTime = DateTime.Parse(ele.Element("CreateDateTime").Value);
+                note.ModifyDateTime = DateTime.Parse(ele.Element("ModifyDateTime").Value);
+                FontStyle fs = new FontStyle();
+                string s_fs = ele.Element("Font").Attribute("Style").Value;
+                if (s_fs.Contains("Italic")) {
+                    fs |= FontStyle.Italic;
+                }
+                if (s_fs.Contains("Bold")) {
+                    fs |= FontStyle.Bold;
+                }
+                if (s_fs.Contains("Underline")) {
+                    fs |= FontStyle.Underline;
+                }
+                if (s_fs.Contains("Strikeout")) {
+                    fs |= FontStyle.Strikeout;
+                }
+                note.Font = new Font(ele.Element("Font").Attribute("Name").Value,
+                    Convert.ToInt32(ele.Element("Font").Attribute("Size").Value),
+                    fs);
+                noteList.Add(note);
+            }
+            if (noteList.Count != 0)
+            {
+                this.Tag = noteList[0];
+            }
+            else {
+                newButton_Click(null,null);
+            }
+            this.refreshMainTextBox();
+
+        }
     }
 }

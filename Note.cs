@@ -15,7 +15,7 @@ namespace DesktopNote
             set { s_Content = value; }
         }
         private DateTime dt_CreateDateTime;
-        public DateTime CreateDataTime {
+        public DateTime CreateDateTime {
             get { return dt_CreateDateTime; }
             set { dt_CreateDateTime = value;}
         }

@@ -78,7 +78,6 @@ namespace DesktopNote
             }    
         }        
 
-
         private void fontComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             font = new Font(this.fontComboBox.SelectedItem.ToString(), font.Size, font.Style);
@@ -109,6 +108,7 @@ namespace DesktopNote
             this.Font = font;
         }
 
+      
 
 
     }
