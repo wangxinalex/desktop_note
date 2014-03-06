@@ -46,7 +46,8 @@ namespace DesktopNote
 
         private void NoteForm_Load(object sender, EventArgs e)
         {
-            newButton_Click(null, null);
+            //newButton_Click(null, null);
+            this.loadNote();
             this.NoteForm_SizeChanged(null, null);
         }
 
@@ -114,8 +115,12 @@ namespace DesktopNote
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
-            if (dr == DialogResult.No) {
+            if (dr == DialogResult.No)
+            {
                 e.Cancel = true;
+            }
+            else {
+                this.saveNote();
             }
         }
 
@@ -258,9 +263,7 @@ namespace DesktopNote
                         tr.Close();
                     }
                 }
-
             }
-
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -286,6 +289,78 @@ namespace DesktopNote
                 }
                 
             }
+        }
+
+        private void loadNote() {
+            string workDirectory = Properties.Settings.Default.WorkDirectory;
+            noteList.Clear();
+            if (Directory.Exists(workDirectory) == false) {
+                Directory.CreateDirectory(workDirectory);
+            }
+            String[] txtFiles = Directory.GetFiles(workDirectory,"*.txt");
+            foreach (String txtFile in txtFiles) {
+                Note note = new Note();
+                StreamReader tr = null;
+                try
+                {
+                    tr = new StreamReader(txtFile, Encoding.Default);
+                    note.Content = tr.ReadToEnd();
+                    noteList.Add(note);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally
+                {
+                    if (tr != null)
+                    {
+                        tr.Close();
+                    }
+                }
+                if (noteList.Count != 0)
+                {
+                    this.Tag = noteList[0];
+                }
+                else {
+                    newButton_Click(null, null);
+                }
+                refreshMainTextBox();
+            }
+        }
+
+        private void saveNote() {
+            string workDirectory = Properties.Settings.Default.WorkDirectory;
+            if (Directory.Exists(workDirectory) == false) {
+                Directory.CreateDirectory(workDirectory);
+            }
+            for(int i = 0; i < this.noteList.Count; i++) {
+                TextWriter tw = null;
+                try
+                {
+                    saveCurrentNote();
+                    tw = new StreamWriter(workDirectory + "\\" + i + ".txt", false, Encoding.Default);
+                    tw.Write(((Note)noteList[i]).Content);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Save Exception " + ex.Message);
+                }
+                finally {
+                    if (tw != null) {
+                        tw.Close();
+                    }
+                }
+            }
+        }
+        private void setWorkDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectDirectoryForm sdf = new SelectDirectoryForm();
+            if (sdf.ShowDialog() == DialogResult.OK) {
+                Properties.Settings.Default.WorkDirectory = sdf.Dir;
+                Properties.Settings.Default.Save();
+            }
+            loadNote();
         }
 
     }

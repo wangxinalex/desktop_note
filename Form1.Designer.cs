@@ -46,6 +46,7 @@
             this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteFormStatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.setWorkDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteFormMenuStrip.SuspendLayout();
             this.noteFormStatusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +84,7 @@
             this.nextLToolStripMenuItem,
             this.loadToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.setWorkDirectoryToolStripMenuItem,
             this.toolStripMenuItem1,
             this.exitXToolStripMenuItem});
             this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
@@ -93,7 +95,7 @@
             // 
             this.createNToolStripMenuItem.Name = "createNToolStripMenuItem";
             this.createNToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.createNToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.createNToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.createNToolStripMenuItem.Text = "Create(&N)";
             this.createNToolStripMenuItem.Click += new System.EventHandler(this.newButton_Click);
             // 
@@ -101,47 +103,47 @@
             // 
             this.deleteDToolStripMenuItem.Name = "deleteDToolStripMenuItem";
             this.deleteDToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.deleteDToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.deleteDToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.deleteDToolStripMenuItem.Text = "Delete(&D)";
             this.deleteDToolStripMenuItem.Click += new System.EventHandler(this.delButton_Click);
             // 
             // previousPToolStripMenuItem
             // 
             this.previousPToolStripMenuItem.Name = "previousPToolStripMenuItem";
-            this.previousPToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.previousPToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.previousPToolStripMenuItem.Text = "Previous(&P)";
             this.previousPToolStripMenuItem.Click += new System.EventHandler(this.preButton_Click);
             // 
             // nextLToolStripMenuItem
             // 
             this.nextLToolStripMenuItem.Name = "nextLToolStripMenuItem";
-            this.nextLToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.nextLToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.nextLToolStripMenuItem.Text = "Next(&L)";
             this.nextLToolStripMenuItem.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.loadToolStripMenuItem.Text = "Load from File";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.saveToolStripMenuItem.Text = "Save to File";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 6);
             // 
             // exitXToolStripMenuItem
             // 
             this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
-            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.exitXToolStripMenuItem.Text = "Exit(&X)";
             this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
             // 
@@ -198,6 +200,13 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(113, 17);
             this.toolStripStatusLabel1.Text = "DesktopNote(1/1)";
             // 
+            // setWorkDirectoryToolStripMenuItem
+            // 
+            this.setWorkDirectoryToolStripMenuItem.Name = "setWorkDirectoryToolStripMenuItem";
+            this.setWorkDirectoryToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.setWorkDirectoryToolStripMenuItem.Text = "Set WorkDirectory";
+            this.setWorkDirectoryToolStripMenuItem.Click += new System.EventHandler(this.setWorkDirectoryToolStripMenuItem_Click);
+            // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -241,6 +250,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setWorkDirectoryToolStripMenuItem;
     }
 }
 

@@ -28,6 +28,8 @@ namespace DesktopNote
         public SelectDirectoryForm()
         {
             InitializeComponent();
+            OKbutton.DialogResult = DialogResult.OK;
+            CancelButton.DialogResult = DialogResult.Cancel;
             this.logicalDriveComboBox.Items.AddRange(Environment.GetLogicalDrives());
             this.logicalDriveComboBox.SelectedIndex = 0;
         }

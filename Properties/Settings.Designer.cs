@@ -22,5 +22,17 @@ namespace DesktopNote.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Temp")]
+        public string WorkDirectory {
+            get {
+                return ((string)(this["WorkDirectory"]));
+            }
+            set {
+                this["WorkDirectory"] = value;
+            }
+        }
     }
 }
