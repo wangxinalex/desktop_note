@@ -53,8 +53,8 @@ namespace DesktopNote
         private void NoteForm_Load(object sender, EventArgs e)
         {
             //newButton_Click(null, null);
-            this.deSerializeNote();
-            //loadNoteFromXML();
+            //this.deSerializeNote();
+            loadNoteFromXML();
             this.NoteForm_SizeChanged(null, null);
         }
 
@@ -70,8 +70,8 @@ namespace DesktopNote
                 e.Cancel = true;
             }
             else {
-                this.serializeNote();
-                //this.saveNoteToXML();
+                //this.serializeNote();
+                this.saveNoteToXML();
             }
         }
 
@@ -481,14 +481,51 @@ namespace DesktopNote
                 }
             }
 
-            if (noteList.Count != 0)
-            {
+            if (noteList.Count != 0){
                 this.Tag = noteList[0];
             }
             else {
                 newButton_Click(null,null);
             }
             this.refreshMainTextBox();
+        }
+
+        private void mainTextBox_DragEnter(object sender, DragEventArgs e) {
+            IDataObject ido = e.Data;
+            if (ido.GetDataPresent(DataFormats.Text, true)) {
+                if ((e.KeyState & 0x08) != 0) {
+                    e.Effect = DragDropEffects.Copy;
+                } else {
+                    e.Effect = DragDropEffects.Move;
+                }
+            } else {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void mainTextBox_DragDrop(object sender, DragEventArgs e) {
+            IDataObject ido = e.Data;
+            if (ido.GetDataPresent(DataFormats.StringFormat, true)) {
+                String str = (String)ido.GetData(DataFormats.StringFormat, true);
+                this.mainTextBox.Text += str;
+            }
+        }
+
+        private void mainTextBox_MouseDown(object sender, MouseEventArgs e) {
+            if (!this.mainTextBox.SelectedText.Equals("")) {
+                int start = mainTextBox.SelectionStart;
+                int length = mainTextBox.SelectionLength;
+                DragDropEffects dde = mainTextBox.DoDragDrop(mainTextBox.SelectedText, DragDropEffects.Copy|DragDropEffects.Move);
+                if (dde == DragDropEffects.Move) {
+                    mainTextBox.Text = mainTextBox.Text.Remove(start, length);
+                }
+            }
+        }
+
+        private void mainTextBox_QueryContinueDrag(object sender, QueryContinueDragEventArgs e) {
+            if (e.EscapePressed) {
+                e.Action = DragAction.Cancel;
+            }
         }
     }
 }

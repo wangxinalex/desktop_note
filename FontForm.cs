@@ -107,9 +107,5 @@ namespace DesktopNote
         {
             this.Font = font;
         }
-
-      
-
-
     }
 }

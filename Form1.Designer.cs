@@ -37,6 +37,7 @@
             this.nextLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setWorkDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,13 +47,13 @@
             this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteFormStatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.setWorkDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteFormMenuStrip.SuspendLayout();
             this.noteFormStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTextBox
             // 
+            this.mainTextBox.AllowDrop = true;
             this.mainTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTextBox.Location = new System.Drawing.Point(0, 25);
             this.mainTextBox.Multiline = true;
@@ -60,8 +61,12 @@
             this.mainTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.mainTextBox.Size = new System.Drawing.Size(526, 236);
             this.mainTextBox.TabIndex = 0;
+            this.mainTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainTextBox_DragDrop);
+            this.mainTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.mainTextBox_DragEnter);
+            this.mainTextBox.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.mainTextBox_QueryContinueDrag);
             this.mainTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainTextBox_KeyDown);
             this.mainTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mainTextBox_KeyPress);
+            this.mainTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainTextBox_MouseDown);
             // 
             // noteFormMenuStrip
             // 
@@ -95,7 +100,7 @@
             // 
             this.createNToolStripMenuItem.Name = "createNToolStripMenuItem";
             this.createNToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.createNToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.createNToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.createNToolStripMenuItem.Text = "Create(&N)";
             this.createNToolStripMenuItem.Click += new System.EventHandler(this.newButton_Click);
             // 
@@ -103,7 +108,7 @@
             // 
             this.deleteDToolStripMenuItem.Name = "deleteDToolStripMenuItem";
             this.deleteDToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.deleteDToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.deleteDToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.deleteDToolStripMenuItem.Text = "Delete(&D)";
             this.deleteDToolStripMenuItem.Click += new System.EventHandler(this.delButton_Click);
             // 
@@ -126,7 +131,7 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.loadToolStripMenuItem.Text = "Load from File";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -138,15 +143,23 @@
             this.saveToolStripMenuItem.Text = "Save to File(&S)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
+            // setWorkDirectoryToolStripMenuItem
+            // 
+            this.setWorkDirectoryToolStripMenuItem.Name = "setWorkDirectoryToolStripMenuItem";
+            this.setWorkDirectoryToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.setWorkDirectoryToolStripMenuItem.Text = "Set WorkDirectory";
+            this.setWorkDirectoryToolStripMenuItem.Visible = false;
+            this.setWorkDirectoryToolStripMenuItem.Click += new System.EventHandler(this.setWorkDirectoryToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 6);
             // 
             // exitXToolStripMenuItem
             // 
             this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
-            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.exitXToolStripMenuItem.Text = "Exit(&X)";
             this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
             // 
@@ -202,14 +215,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(113, 17);
             this.toolStripStatusLabel1.Text = "DesktopNote(1/1)";
-            // 
-            // setWorkDirectoryToolStripMenuItem
-            // 
-            this.setWorkDirectoryToolStripMenuItem.Name = "setWorkDirectoryToolStripMenuItem";
-            this.setWorkDirectoryToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.setWorkDirectoryToolStripMenuItem.Text = "Set WorkDirectory";
-            this.setWorkDirectoryToolStripMenuItem.Visible = false;
-            this.setWorkDirectoryToolStripMenuItem.Click += new System.EventHandler(this.setWorkDirectoryToolStripMenuItem_Click);
             // 
             // NoteForm
             // 
