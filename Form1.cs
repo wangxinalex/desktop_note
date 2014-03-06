@@ -18,6 +18,7 @@ namespace DesktopNote
     {
         string[] fs_str = {"Bold", "Italic","Underline","Strikeout"};
         FontStyle[] fs_fs = {FontStyle.Bold, FontStyle.Italic, FontStyle.Underline, FontStyle.Strikeout };
+        string savefile = Application.StartupPath + "\\Notes.xml";
 
         private ArrayList noteList = new ArrayList();
         private ArrayList definedCombinationList = new ArrayList();
@@ -375,14 +376,7 @@ namespace DesktopNote
 
         private void saveNoteToXML() {
             saveCurrentNote();
-            
-            string saveFile = Application.StartupPath+"\\Notes.xml";
-            XDocument xDoc = new XDocument();
-            XElement root = new XElement("Notes");
-            xDoc.Add(root);
-            xDoc.Save(saveFile);
-            
-            XElement xe = XDocument.Load(saveFile).Element("Notes");
+            XElement xe = XDocument.Load(savefile).Element("Notes");
             foreach(Note note in this.noteList){
                 XElement record = new XElement("Note",
                         new XElement("Content", note.Content),
@@ -397,17 +391,27 @@ namespace DesktopNote
 
                 xe.Add(record);
             }
-            xe.Save(saveFile);
+            xe.Save(savefile);
+        }
+
+        private void createXMLRoot() { 
+            XDocument xDoc = new XDocument();
+            XElement root = new XElement("Notes");
+            xDoc.Add(root);
+            xDoc.Save(savefile);
         }
 
         private void loadNoteFromXML() {
             noteList.Clear();
-            string saveFile = Application.StartupPath+"\\Notes.xml";
-            XElement xe = XDocument.Load(saveFile).Element("Notes");
+            if (!File.Exists(savefile)) {
+                createXMLRoot();
+            }
+            XElement xe = XDocument.Load(savefile).Element("Notes");
             IEnumerable<XElement> elements = from ele in xe.Elements("Note")
                                              select ele;
             loadListbyElements(elements);
         }
+
         private void loadListbyElements(IEnumerable<XElement> elements){
             foreach(var ele in elements){
                 Note note = new Note();
@@ -434,7 +438,6 @@ namespace DesktopNote
                 newButton_Click(null, null);
             }
             this.refreshMainTextBox();
-
         }
 
         private void serializeNote() {

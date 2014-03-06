@@ -29,7 +29,7 @@ namespace DesktopNote
         {
             InitializeComponent();
             OKbutton.DialogResult = DialogResult.OK;
-            CancelButton.DialogResult = DialogResult.Cancel;
+            selectCancelButton.DialogResult = DialogResult.Cancel;
             this.logicalDriveComboBox.Items.AddRange(Environment.GetLogicalDrives());
             this.logicalDriveComboBox.SelectedIndex = 0;
         }

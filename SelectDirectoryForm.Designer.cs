@@ -31,11 +31,11 @@
             this.logicalDriveComboBox = new System.Windows.Forms.ComboBox();
             this.directoryListBox = new System.Windows.Forms.ListBox();
             this.bottomPanel = new System.Windows.Forms.Panel();
-            this.UPbutton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.workDirectoryTextBox = new System.Windows.Forms.TextBox();
+            this.selectCancelButton = new System.Windows.Forms.Button();
             this.OKbutton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.workDirectoryTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.UPbutton = new System.Windows.Forms.Button();
             this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             // 
             // bottomPanel
             // 
-            this.bottomPanel.Controls.Add(this.CancelButton);
+            this.bottomPanel.Controls.Add(this.selectCancelButton);
             this.bottomPanel.Controls.Add(this.OKbutton);
             this.bottomPanel.Controls.Add(this.workDirectoryTextBox);
             this.bottomPanel.Controls.Add(this.label1);
@@ -73,31 +73,14 @@
             this.bottomPanel.Size = new System.Drawing.Size(410, 24);
             this.bottomPanel.TabIndex = 2;
             // 
-            // UPbutton
+            // SelectCancelButton
             // 
-            this.UPbutton.Location = new System.Drawing.Point(0, 0);
-            this.UPbutton.Name = "UPbutton";
-            this.UPbutton.Size = new System.Drawing.Size(75, 23);
-            this.UPbutton.TabIndex = 0;
-            this.UPbutton.Text = "Up";
-            this.UPbutton.UseVisualStyleBackColor = true;
-            this.UPbutton.Click += new System.EventHandler(this.UPbutton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Directory";
-            // 
-            // workDirectoryTextBox
-            // 
-            this.workDirectoryTextBox.Location = new System.Drawing.Point(147, 0);
-            this.workDirectoryTextBox.Name = "workDirectoryTextBox";
-            this.workDirectoryTextBox.Size = new System.Drawing.Size(107, 21);
-            this.workDirectoryTextBox.TabIndex = 2;
+            this.selectCancelButton.Location = new System.Drawing.Point(332, 0);
+            this.selectCancelButton.Name = "SelectCancelButton";
+            this.selectCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.selectCancelButton.TabIndex = 4;
+            this.selectCancelButton.Text = "Cancel";
+            this.selectCancelButton.UseVisualStyleBackColor = true;
             // 
             // OKbutton
             // 
@@ -108,14 +91,31 @@
             this.OKbutton.Text = "OK";
             this.OKbutton.UseVisualStyleBackColor = true;
             // 
-            // CancelButton
+            // workDirectoryTextBox
             // 
-            this.CancelButton.Location = new System.Drawing.Point(332, 0);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 4;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.workDirectoryTextBox.Location = new System.Drawing.Point(147, 0);
+            this.workDirectoryTextBox.Name = "workDirectoryTextBox";
+            this.workDirectoryTextBox.Size = new System.Drawing.Size(107, 21);
+            this.workDirectoryTextBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(81, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Directory";
+            // 
+            // UPbutton
+            // 
+            this.UPbutton.Location = new System.Drawing.Point(0, 0);
+            this.UPbutton.Name = "UPbutton";
+            this.UPbutton.Size = new System.Drawing.Size(75, 23);
+            this.UPbutton.TabIndex = 0;
+            this.UPbutton.Text = "Up";
+            this.UPbutton.UseVisualStyleBackColor = true;
+            this.UPbutton.Click += new System.EventHandler(this.UPbutton_Click);
             // 
             // SelectDirectoryForm
             // 
@@ -138,7 +138,7 @@
         private System.Windows.Forms.ComboBox logicalDriveComboBox;
         private System.Windows.Forms.ListBox directoryListBox;
         private System.Windows.Forms.Panel bottomPanel;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button selectCancelButton;
         private System.Windows.Forms.Button OKbutton;
         private System.Windows.Forms.TextBox workDirectoryTextBox;
         private System.Windows.Forms.Label label1;
