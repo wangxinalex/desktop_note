@@ -442,16 +442,14 @@ namespace DesktopNote
 
         private void serializeNote() {
             Stream stream = null;
-            try
-            {
+            try{
                 this.saveCurrentNote();
                 BinaryFormatter Transfer = new BinaryFormatter();
                 stream = new FileStream(Application.StartupPath + "\\myNotes.bin",
                 FileMode.Create, FileAccess.Write, FileShare.None);
                 Transfer.Serialize(stream, this.noteList);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 MessageBox.Show(ex.Message);
             }
             finally {

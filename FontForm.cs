@@ -70,8 +70,6 @@ namespace DesktopNote
             apply_Button.Click += new EventHandler(applyButton_Click);
         }
 
-       
-
         void applyButton_Click(Object sender, EventArgs e) {
             if (Apply != null) {
                 Apply(this, new EventArgs());
