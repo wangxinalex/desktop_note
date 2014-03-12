@@ -29,7 +29,5 @@ namespace DesktopNote
             get { return replacement; }
             set { replacement = value; }
         }
-
-        
     }
 }
