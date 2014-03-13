@@ -35,7 +35,6 @@
             this.deleteDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previousPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nextLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setWorkDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -87,7 +86,6 @@
             this.deleteDToolStripMenuItem,
             this.previousPToolStripMenuItem,
             this.nextLToolStripMenuItem,
-            this.loadToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.setWorkDirectoryToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -127,13 +125,6 @@
             this.nextLToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.nextLToolStripMenuItem.Text = "Next(&J)";
             this.nextLToolStripMenuItem.Click += new System.EventHandler(this.nextButton_Click);
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.loadToolStripMenuItem.Text = "Load from File";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -176,21 +167,23 @@
             // foreColorBToolStripMenuItem
             // 
             this.foreColorBToolStripMenuItem.Name = "foreColorBToolStripMenuItem";
-            this.foreColorBToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.foreColorBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.foreColorBToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.foreColorBToolStripMenuItem.Text = "ForeColor(&B)";
             this.foreColorBToolStripMenuItem.Click += new System.EventHandler(this.setForeColorButton_Click);
             // 
             // backColorHToolStripMenuItem
             // 
             this.backColorHToolStripMenuItem.Name = "backColorHToolStripMenuItem";
-            this.backColorHToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.backColorHToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.backColorHToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.backColorHToolStripMenuItem.Text = "BackColor(&H)";
             this.backColorHToolStripMenuItem.Click += new System.EventHandler(this.setBackgroundButton_Click);
             // 
             // fontFToolStripMenuItem
             // 
             this.fontFToolStripMenuItem.Name = "fontFToolStripMenuItem";
-            this.fontFToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.fontFToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.fontFToolStripMenuItem.Text = "Font(&F)";
             this.fontFToolStripMenuItem.Click += new System.EventHandler(this.setFontButton_Click);
             // 
@@ -226,7 +219,7 @@
             this.Controls.Add(this.noteFormMenuStrip);
             this.MainMenuStrip = this.noteFormMenuStrip;
             this.Name = "NoteForm";
-            this.Text = "桌面便笺";
+            this.Text = "Desktop Note";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoteForm_FormClosing);
             this.Load += new System.EventHandler(this.NoteForm_Load);
             this.SizeChanged += new System.EventHandler(this.NoteForm_SizeChanged);
@@ -257,7 +250,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolsTToolStripMenuItem;
         private System.Windows.Forms.StatusStrip noteFormStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setWorkDirectoryToolStripMenuItem;
     }

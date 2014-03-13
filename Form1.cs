@@ -297,7 +297,6 @@ namespace DesktopNote
             //            tw.Close();
             //        }
             //    }
-                
             //}
             saveNoteToXML();
         }

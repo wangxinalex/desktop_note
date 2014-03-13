@@ -46,6 +46,5 @@ namespace DesktopNote
             get { return ft_Font; }
             set { ft_Font = value; }
         }
-
     }
 }
